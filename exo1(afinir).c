@@ -11,6 +11,7 @@ scanf("%s",&c);
     return(c);
 }
 
+
 char toLower (char c) {
 
 
@@ -50,13 +51,51 @@ return(c);
 
 }
 
+char changeToMaj(char c){
+
+if (c-90>0) {
+
+    c = c -32;
+
+    return(c);
+
+}
+else {
+
+    c=c;
+return(c);
+
+}
+
+}
+
+char changeToMin(char c){
+
+
+if (c-90<=0) {
+
+    c = c +32;
+    return(c);
+}
+
+else {
+
+    c=c;
+return(c);
+
+}
+
+}
+
 
 void main () {
 
     char minuscule;
     char majuscule;
     char lettre;
+    char autresLettres=0;
     char prenom[SIZE];
+
 
     printf("Votre lettre en majuscule est : %c\n", toUpper(minuscule));
     printf("Votre  lettre  en miniscule est : %c\n",toLower(majuscule));
@@ -65,24 +104,14 @@ void main () {
     printf("\nEntrez un prenom:");
     scanf("%s",&prenom);
 
-if (prenom[0]-90>0){
-
-    prenom[0]=prenom[0]-32;
-
-}
-
+    char premiereLettre=prenom[0];
 
 for (int i=1;prenom[i]!='\0';i++){
 
-    if(prenom[i]-90<=0){
-         prenom[i]=prenom[i]+32;
-    }
-    else{
-
-        prenom[i]=prenom[i];
-    }
+    autresLettres=prenom[i];
+  
 }
-printf("\nLe prenom est %s",prenom);
+printf("\nLe prenom est %c%c",changeToMaj(premiereLettre),changeToMin(autresLettres));
 
 }
 
