@@ -28,14 +28,14 @@ char changeLetter (char c){
 printf("\nEntrez un caractere: ");
 scanf("%s",&c);
 
- if (c-90<=0) {
+ if ('c'<97 && 'c'>64) {
 
     c = c +32;
     return(c);
 
 }
 
- if (c-90>0) {
+ if ('c'>97 && 'c'<123 ) {
 
     c = c -32;
 
@@ -88,6 +88,7 @@ return(c);
 }
 
 
+
 void main () {
 
     char minuscule;
@@ -101,17 +102,15 @@ void main () {
     printf("Votre  lettre  en miniscule est : %c\n",toLower(majuscule));
     printf("L'equivalent de votre caractere est : %c\n",changeLetter(lettre));
 
+
     printf("\nEntrez un prenom:");
-    scanf("%s",&prenom);
-
-    char premiereLettre=prenom[0];
-
-for (int i=1;prenom[i]!='\0';i++){
-
-    autresLettres=prenom[i];
-  
+    scanf("%s",prenom);
+    int longueur=strlen(prenom);
+    prenom[0]=changeToMaj(prenom[0]);
+    for (int i=1;i<longueur;i++){
+        prenom[i]=changeToMin(prenom[i]);
+    }
+    printf("\nLe prenom est %s",prenom);
 }
-printf("\nLe prenom est %c%c",changeToMaj(premiereLettre),changeToMin(autresLettres));
 
-}
 
