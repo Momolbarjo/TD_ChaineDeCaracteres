@@ -1,53 +1,81 @@
 #include <stdio.h>
-#include <stdbool.h>
-#define SIZE 1000
+#include <string.h>
+#define SIZE 150
 
+int areSringEqual(char chaine1[],char chaine2[]){
 
-int getStringSize(const char* str){
- int i=0;
+    int egal=1;
 
-while (str[i] != '\0')
-{
-i = i + 1;
+int longueur1=strlen(chaine1);
+int longueur2=strlen(chaine2);
 
-}
-return (i);
-}
+if (longueur1 != longueur2){
 
-bool areSringEqual (chaine1,chaine2){
-
-if (chaine1==chaine2) {
-
-    return(true);
-}
-else {
-
-    return(false);
-}
+    egal=2;
 
 }
+
+
+ if (longueur1 == longueur2){
+
+
+    for(int i=0;i<longueur1;i++){
+
+        if(chaine1[i] != chaine2[i]){
+
+
+        egal=0;
+
+
+        }
+
+        else if(chaine1[i] == chaine2[i]){
+
+
+        egal=1;
+
+        }
+
+ }
+ }
+
+
+
+
+return egal;
+}
+
+
 
 void main () {
 
-char chaine1[SIZE];
-char chaine2[SIZE];
+char chaine1[SIZE],chaine2[SIZE];
 
-printf("Ecris ce que tu veux\n");
-scanf("%s",&chaine1);
 
- printf("il y a %d caracteres dans la chaine\n", getStringSize(chaine1));
+printf("Entrez 2 chaines de caracteres: ");
+scanf("%s",chaine1);
+scanf("%s",chaine2);
 
- printf("Reecris ce que tu veux\n");
-scanf("%s",&chaine2);
 
-if (areSringEqual(chaine1,chaine2)==true){
+int egal=areSringEqual(chaine1,chaine2);
 
-    printf("Les chaines sont les memes");
-}
+if(egal==0){
 
-else if (areSringEqual(chaine1,chaine2)==false)  {
-
-    printf("Les chaines  ne sont pas les memes");
-}
+printf("Les chaines sont differentes");
 
 }
+
+else if(egal==1)  {
+
+printf("Les chaines sont les memes");
+
+}
+else if(egal==2)  {
+
+printf(" T con ou quoi , c meme pas la meme taille");
+
+}
+
+
+}
+
