@@ -2,80 +2,100 @@
 #include <string.h>
 #define SIZE 150
 
+int getStringSize(char chaine1[]){
+
+ int  size=0;
+
+while(chaine1[size]!= '\0'){
+
+    size++;
+}
+return(size);
+}
+
 int areSringEqual(char chaine1[],char chaine2[]){
 
     int egal=1;
+    int i=0;
 
-int longueur1=strlen(chaine1);
-int longueur2=strlen(chaine2);
+int longueur1=getStringSize(chaine1);
+int longueur2=getStringSize(chaine2);
 
 if (longueur1 != longueur2){
 
     egal=2;
-
+    return egal;
 }
 
 
  if (longueur1 == longueur2){
-
-
-    for(int i=0;i<longueur1;i++){
+     while (chaine1[i] != '\0'){
 
         if(chaine1[i] != chaine2[i]){
-
-
         egal=0;
-
-
+        return egal;
         }
+    i++;
 
-        else if(chaine1[i] == chaine2[i]){
-
-
-        egal=1;
-
-        }
-
- }
+  }
  }
 
-
-
+egal=1;
 
 return egal;
 }
 
+int concatStrings( char chaine1[],char chaine2[]){
 
+
+char chaine3[SIZE];
+
+int i=0,j=0;
+
+ while (chaine1[i] != '\0') {
+        chaine3[j] = chaine1[i];
+        i++;
+        j++;
+    }
+
+    i = 0;
+    while (chaine2[i] != '\0') {
+        chaine3[j] = chaine2[i];
+        i++;
+        j++;
+    }
+    chaine3[j] = '\0';
+
+    return chaine3;
+}
 
 void main () {
 
-char chaine1[SIZE],chaine2[SIZE];
-
+char chaine1[SIZE],chaine2[SIZE],chaine3[SIZE];
 
 printf("Entrez 2 chaines de caracteres: ");
 scanf("%s",chaine1);
 scanf("%s",chaine2);
 
-
 int egal=areSringEqual(chaine1,chaine2);
 
 if(egal==0){
 
-printf("Les chaines sont differentes");
+printf("Les chaines sont differentes\n");
 
 }
 
 else if(egal==1)  {
 
-printf("Les chaines sont les memes");
+printf("Les chaines sont les memes\n");
 
 }
 else if(egal==2)  {
 
-printf(" T con ou quoi , c meme pas la meme taille");
+printf(" T con ou quoi , c meme pas la meme taille\n");
 
 }
-
+strcpy(chaine3, concatStrings(chaine1, chaine2));
+printf("Vos chaines concatenes sont de la forme %s",chaine3);
 
 }
-
