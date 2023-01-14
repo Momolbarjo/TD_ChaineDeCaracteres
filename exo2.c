@@ -13,6 +13,10 @@ while(chaine1[size]!= '\0'){
 return(size);
 }
 
+
+
+
+
 int areSringEqual(char chaine1[],char chaine2[]){
 
     int egal=1;
@@ -25,20 +29,28 @@ if (longueur1 != longueur2){
 
     egal=2;
     return egal;
+
 }
 
 
  if (longueur1 == longueur2){
+
+
      while (chaine1[i] != '\0'){
 
         if(chaine1[i] != chaine2[i]){
+
+
         egal=0;
         return egal;
+
+
         }
     i++;
 
   }
  }
+
 
 egal=1;
 
@@ -47,35 +59,31 @@ return egal;
 
 int concatStrings( char chaine1[],char chaine2[]){
 
+int longueur1=getStringSize(chaine1);
 
-char chaine3[SIZE];
+int i=0;
 
-int i=0,j=0;
+  for(i=0;chaine2[i]!='\0';i++)
+ {
+  chaine1[longueur1+i] = chaine2[i];
+ }
+ chaine1[longueur1+i]='\0';
 
- while (chaine1[i] != '\0') {
-        chaine3[j] = chaine1[i];
-        i++;
-        j++;
-    }
-
-    i = 0;
-    while (chaine2[i] != '\0') {
-        chaine3[j] = chaine2[i];
-        i++;
-        j++;
-    }
-    chaine3[j] = '\0';
-
-    return chaine3;
+return chaine1;
 }
+
+
 
 void main () {
 
 char chaine1[SIZE],chaine2[SIZE],chaine3[SIZE];
 
+
 printf("Entrez 2 chaines de caracteres: ");
 scanf("%s",chaine1);
 scanf("%s",chaine2);
+
+
 
 int egal=areSringEqual(chaine1,chaine2);
 
@@ -95,7 +103,5 @@ else if(egal==2)  {
 printf(" T con ou quoi , c meme pas la meme taille\n");
 
 }
-strcpy(chaine3, concatStrings(chaine1, chaine2));
-printf("Vos chaines concatenes sont de la forme %s",chaine3);
-
+printf("%s",concatStrings(chaine1,chaine2));
 }
