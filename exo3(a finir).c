@@ -56,7 +56,7 @@ void vigenere_cipher( char message[], char keyword[] )
 {
 
 int i,j=0;
-for( i=0;;message[i] !='\0';i++;j++)
+for( i=0;message[i] !='\0';i++)
  {
 
      if((message[i]+keyword[j])%97 >25)
