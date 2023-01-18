@@ -52,25 +52,30 @@ printf("%s",secret);
 
 }
 
-vigenere_cipher( char message [], char keyword[] )
+void vigenere_cipher( char message[], char keyword[] )
 {
 
-
-for(int i=0;message[i] !='\0';i++)
+int i,j=0;
+for( i=0;;message[i] !='\0';i++;j++)
  {
 
-     if((message[i]+keyword[i])%97 >25)
+     if((message[i]+keyword[j])%97 >25)
     {
-     message[i]=(message[i]+keyword[i])%97;
+     message[i]=message[i]+(keyword[j])%97-26%97;
 
  }
 
  else{
 
-    message[i]=(message[i]+keyword[i])%97;
+    message[i]=message[i]+(keyword[j])%97;
  }
-
+if(keyword[j]=='\0'){
+	
+	j=0;
 }
+j++;
+}
+
 printf("%s",message);
 
 }
