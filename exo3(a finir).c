@@ -101,7 +101,7 @@ cesar_decipher(secret,shift);*/
 printf("\nEntrez le message a coder suivi de la clef de vigenere: \n");
 scanf("%s",code2);
 scanf("%s",shift2);
-cesar_decipher(code2,shift2);
+vigenere_cipher(code2,shift2);
 
 
 }
