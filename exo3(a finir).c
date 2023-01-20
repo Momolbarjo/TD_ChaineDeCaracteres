@@ -129,7 +129,31 @@ for( i=0;secret[i] !='\0';i++,j++)
 
 	j=0;
 }
+if(secret[i]=='_'){
 
+     secret[i]='_';
+
+     j=j-1;
+
+}
+if(secret[i]>='A' && secret[i]<='Z')
+    {
+if((secret[i]-keyword[j]-32)%26 <0)
+    {
+     secret[i]=secret[i]-(keyword[j]-32)%65;
+
+ }
+
+ else
+ {
+
+    secret[i]=secret[i]-(keyword[j]-32)%65+26;
+ }
+    }
+
+
+    if(secret[i]>='a' && secret[i]<='z')
+    {
 
      if((secret[i]-keyword[j])%26 <0)
     {
@@ -141,7 +165,7 @@ for( i=0;secret[i] !='\0';i++,j++)
          secret[i]=secret[i]-(keyword[j])%97;
  }
 
-
+    }
 }
 
 printf("%s",secret);
@@ -157,19 +181,20 @@ char code[SIZE],secret[SIZE],secret2[SIZE],code2[SIZE],shift2[SIZE],shift3[SIZE]
 int shift;
 
 
-/*printf("Entrez le message a coder suivi de la clef privee: \n");
+printf("Entrez le message a coder suivi de la clef privee: \n");
 scanf("%s",code);
 scanf("%d",&shift);
 cesar_cipher(code,shift);
 printf("\nEntrez le message a decoder suivi de la clef privee: \n");
 scanf("%s",secret);
 scanf("%d",&shift);
-cesar_decipher(secret,shift);*/
+cesar_decipher(secret,shift);
 
 printf("\nEntrez le message a coder suivi de la clef de vigenere: \n");
 scanf("%s",code2);
 scanf("%s",shift2);
 vigenere_cipher(code2,shift2);
+
 
 printf("\nEntrez le message a decoder suivi de la clef de vigenere: \n");
 scanf("%s",secret2);
