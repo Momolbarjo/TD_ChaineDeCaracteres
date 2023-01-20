@@ -63,28 +63,96 @@ for( i=0;message[i] !='\0';i++,j++)
 	j=0;
 }
 
+if(message[i]=='_'){
+
+     message[i]='_';
+
+     j=j-1;
+
+}
+
+if(message[i]>='A' && message[i]<='Z'){
+
+
+
+
+
+     if((message[i]+keyword[j]-32)%65 >25)
+    {
+     message[i]=message[i]+(keyword[j]-32)%65-26%65;
+
+ }
+
+ else
+ {
+
+    message[i]=message[i]+(keyword[j]-32)%65;
+ }
+
+
+}
+
+if(message[i]>='a' && message[i]<='z'){
+
+
+
+
+
      if((message[i]+keyword[j])%97 >25)
     {
      message[i]=message[i]+(keyword[j])%97-26%97;
 
  }
 
- else{
+ else
+ {
 
     message[i]=message[i]+(keyword[j])%97;
  }
 
 
 }
+ }
 
 printf("%s",message);
 
 }
 
+void vigenere_decipher( char secret[], char keyword[] )
+{
+
+int i,j=0;
+for( i=0;secret[i] !='\0';i++,j++)
+ {
+
+     if(keyword[j]=='\0'){
+
+	j=0;
+}
+
+
+     if((secret[i]-keyword[j])%26 <0)
+    {
+     secret[i]=secret[i]-(keyword[j])%97+26%97;
+
+ }
+
+ else{
+         secret[i]=secret[i]-(keyword[j])%97;
+ }
+
+
+}
+
+printf("%s",secret);
+
+}
+
+
 void main()
 {
 
-char code[SIZE],secret[SIZE],code2[SIZE],shift2[SIZE];
+char code[SIZE],secret[SIZE],secret2[SIZE],code2[SIZE],shift2[SIZE],shift3[SIZE];
 
 int shift;
 
@@ -103,5 +171,8 @@ scanf("%s",code2);
 scanf("%s",shift2);
 vigenere_cipher(code2,shift2);
 
-
+printf("\nEntrez le message a decoder suivi de la clef de vigenere: \n");
+scanf("%s",secret2);
+scanf("%s",shift3);
+vigenere_decipher(secret2,shift3);
 }
